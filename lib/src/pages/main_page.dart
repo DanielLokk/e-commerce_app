@@ -12,21 +12,14 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   @override
-  Widget _icon(IconData icon, {Color color = Colors.amber}) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      child: Icon(
-        icon,
-        color: color,
-      ),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: Icon(Icons.access_alarm),
+      child: Center(
+        child: Text(
+          "Main page",
+        ),
+      ),
     );
   }
 }
