@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
+      debugShowCheckedModeBanner: false,
       routes: Routes.getRoute(),
       initialRoute: 'MainPage',
     );
