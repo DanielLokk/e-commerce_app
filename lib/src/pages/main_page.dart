@@ -13,6 +13,26 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  Widget categoryBubble(BuildContext context) {
+    return Container(
+        child: Row(
+      children: [
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+        Text("Hello"),
+      ],
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
