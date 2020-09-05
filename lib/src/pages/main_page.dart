@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  Widget categoryBubble(BuildContext context) {
+  Widget categoryBubble() {
     return Container(
         child: Row(
       children: [
@@ -36,24 +36,29 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: SearchBar<Post>(
-            searchBarStyle: SearchBarStyle(
-              backgroundColor: Theme1.gray,
-              padding: EdgeInsets.only(top: 0.75, left: 20),
-              borderRadius: BorderRadius.circular(100),
+      body: Column(
+        children: [
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: SearchBar<Post>(
+                searchBarStyle: SearchBarStyle(
+                  backgroundColor: Theme1.gray,
+                  padding: EdgeInsets.only(top: 0.75, left: 20),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                onSearch: search,
+                onItemFound: (Post post, int index) {
+                  return ListTile(
+                    title: Text(post.title),
+                    subtitle: Text(post.description),
+                  );
+                },
+              ),
             ),
-            onSearch: search,
-            onItemFound: (Post post, int index) {
-              return ListTile(
-                title: Text(post.title),
-                subtitle: Text(post.description),
-              );
-            },
           ),
-        ),
+          //categoryBubble(),
+        ],
       ),
     );
   }
