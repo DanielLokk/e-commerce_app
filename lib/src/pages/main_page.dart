@@ -2,6 +2,7 @@ import 'package:ecommerceapp/src/themes/theme1.dart';
 import 'package:flutter/material.dart';
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flappy_search_bar/search_bar_style.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
@@ -16,6 +17,7 @@ class _MainPageState extends State<MainPage> {
   Widget categories() {
     return Expanded(
       child: new ListView.builder(
+        padding: new EdgeInsets.only(left: 20),
         scrollDirection: Axis.horizontal,
         itemCount: 8,
         itemBuilder: (context, index) => new Stack(
@@ -26,9 +28,10 @@ class _MainPageState extends State<MainPage> {
               height: 60.0,
               decoration: new BoxDecoration(
                   shape: BoxShape.circle,
+                  border: Border.all(color: Colors.green[300]),
                   image: new DecorationImage(
                       image: new NetworkImage(
-                          'https://www.google.es/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'),
+                          "https://cdn1.iconfinder.com/data/icons/women-s-clothing-3-line/64/female_clothes-05-512.png"),
                       fit: BoxFit.fill)),
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
             )
@@ -38,50 +41,27 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  Widget searchBar() {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: SearchBar<Post>(
-          searchBarStyle: SearchBarStyle(
-            backgroundColor: Theme1.gray,
-            padding: EdgeInsets.only(top: 0.75, left: 20),
-            borderRadius: BorderRadius.circular(100),
-          ),
-          onSearch: search,
-          onItemFound: (Post post, int index) {
-            return ListTile(
-              title: Text(post.title),
-              subtitle: Text(post.description),
-            );
-          },
-        ),
-      ),
+  Widget makeTitle(String title) {
+    return new Row(
+      children: [
+        Padding(padding: EdgeInsets.only(left: 25)),
+        new Text(title, style: GoogleFonts.muli(fontSize: 30)),
+      ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: <Widget>[categories()],
-    ));
-  }
-}
-
-class Post {
-  final String title;
-  final String description;
-
-  Post(this.title, this.description);
-}
-
-Future<List<Post>> search(String search) async {
-  await Future.delayed(Duration(seconds: 2));
-  return List.generate(search.length, (int index) {
-    return Post(
-      "Title : $search $index",
-      "Description :$search $index",
+      body: Column(
+        children: <Widget>[
+          Padding(padding: new EdgeInsets.only(top: 120)),
+          makeTitle("Categories"),
+          Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+          categories(),
+          makeTitle("Trending"),
+        ],
+      ),
     );
-  });
+  }
 }
