@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
             Column(
               children: [
                 Container(
-                  height: 89,
+                  height: 100,
                   child: getCategories(),
                 ),
               ],
@@ -38,7 +38,10 @@ class _HomeState extends State<Home> {
 
   Widget getCategories() {
     return ListView(
-        scrollDirection: Axis.horizontal, children: getListCategories());
+      scrollDirection: Axis.horizontal,
+      children: getListCategories(),
+      padding: EdgeInsets.only(top: 20),
+    );
   }
 
   List<Widget> getListCategories() {
@@ -51,7 +54,7 @@ class _HomeState extends State<Home> {
 
   Widget createCategory(Category category) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
       child: Column(
         children: <Widget>[
           Container(
