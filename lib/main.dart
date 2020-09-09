@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/src/pages/homePage.dart';
+import 'package:ecommerceapp/src/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'src/themes/theme.dart';
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: new HomePage(),
+      home: new Home(),
     );
   }
 }
