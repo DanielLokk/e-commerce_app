@@ -114,27 +114,30 @@ class _HomeState extends State<Home> {
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
+        children: [
           Row(
             children: [
               Container(
-                margin: EdgeInsets.all(5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                decoration: BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                child: Stack(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(right: 10),
-                      child: CircleAvatar(
-                          backgroundImage: post.user.profilePicture),
-                    ),
-                    Text(post.user.username),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            alignment: Alignment.topCenter,
+                            repeat: ImageRepeat.noRepeat,
+                            image: AssetImage("lib/src/assets/product1.jpg")),
+                      ),
+                    )
                   ],
                 ),
               ),
-              IconButton(
-                icon: Icon(Icons.more_horiz),
-                onPressed: () {},
-              ),
+              Container(
+                child: Text("column2"),
+              )
             ],
           ),
         ],
