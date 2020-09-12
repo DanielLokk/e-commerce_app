@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:ecommerceapp/src/models/category.dart';
 import 'package:ecommerceapp/src/models/post.dart';
 import 'package:flutter/material.dart';
@@ -14,31 +16,40 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: Container(
-        child: ListView(
-          children: <Widget>[
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Padding(padding: EdgeInsets.only(left: 25)),
-                    Text(
-                      "Categories",
-                      style: GoogleFonts.muli(
-                          fontWeight: FontWeight.bold, fontSize: 27),
-                    ),
-                  ],
-                ),
-                Container(
-                  height: 100,
-                  child: getCategories(),
-                ),
-                Divider(),
-                Column(
-                  children: getPosts(context),
-                ),
-              ],
-            ),
-          ],
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(padding: EdgeInsets.only(left: 25)),
+                      Text(
+                        "Categories",
+                        style: GoogleFonts.muli(
+                            fontWeight: FontWeight.bold, fontSize: 27),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 100,
+                    child: getCategories(),
+                  ),
+                  Divider(),
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5.0,
+                        mainAxisSpacing: 0.0),
+                    itemCount: listPosts.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        getPost(context, listPosts[index], index),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -110,8 +121,44 @@ class _HomeState extends State<Home> {
     );
   }
 
+  List<Widget> getPosts(BuildContext context) {
+    List<Widget> posts = [];
+    int index = 0;
+    for (Post post in listPosts) {
+      posts.add(getPost(context, post, index));
+      index++;
+    }
+    return posts;
+  }
+
   Widget getPost(BuildContext context, Post post, int index) {
     return Container(
+      decoration: BoxDecoration(color: Colors.black12),
+      padding: EdgeInsets.all(50),
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              AspectRatio(
+                aspectRatio: 1.1,
+                child: Container(
+                  margin: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                        alignment: FractionalOffset.topCenter,
+                        fit: BoxFit.cover,
+                        image: post.image),
+                  ),
+                ),
+              ),
+              Text("Burger")
+            ],
+          ),
+        ],
+      ),
+    );
+    /* return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -142,16 +189,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-    );
-  }
-
-  List<Widget> getPosts(BuildContext context) {
-    List<Widget> posts = [];
-    int index = 0;
-    for (Post post in listPosts) {
-      posts.add(getPost(context, post, index));
-      index++;
-    }
-    return posts;
+    ); */
   }
 }

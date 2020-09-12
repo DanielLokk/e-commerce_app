@@ -23,6 +23,4 @@ List<Post> listPosts = [
   post1,
   post1,
   post1,
-  post1,
-  post1,
 ];
