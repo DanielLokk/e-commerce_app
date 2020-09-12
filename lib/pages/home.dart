@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/models/category.dart';
 import 'package:ecommerceapp/models/post.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerceapp/models/global.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,8 @@ class _HomeState extends State<Home> {
     return new Scaffold(
       body: Container(
         child: SafeArea(
-          child: Column(
+          child: ListView(
+            physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               Column(
                 children: [
@@ -36,8 +38,10 @@ class _HomeState extends State<Home> {
                   ),
                   Divider(),
                   GridView.builder(
+                    cacheExtent: 1.2 * listPosts.length,
+                    addAutomaticKeepAlives: true,
+                    dragStartBehavior: DragStartBehavior.down,
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    scrollDirection: Axis.vertical,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio: 1 / 1.2,
                         crossAxisCount: 2,
