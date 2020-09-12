@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 User user = new User("username", AssetImage("lib/assets/profile1.jpg"), [], []);
 
-Post post1 = new Post(AssetImage("lib/assets/product1.jpg"), user,
+Post post1 = new Post(AssetImage("lib/assets/post-image.jpg"), user,
     "description", DateTime.now(), [], [], false, false);
 
 List<Category> categories = [
@@ -18,6 +18,10 @@ List<Category> categories = [
 ];
 
 List<Post> listPosts = [
+  post1,
+  post1,
+  post1,
+  post1,
   post1,
   post1,
   post1,

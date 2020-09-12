@@ -54,6 +54,7 @@ flutter:
     - lib/assets/profile1.jpg
     - lib/assets/product1.jpg
     - lib/assets/tshirt1.png
+    - lib/assets/post-image.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

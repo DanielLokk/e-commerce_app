@@ -10,6 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final double itemHeight = 200;
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -30,13 +31,15 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   Container(
-                    height: 100,
+                    height: 120,
                     child: getCategories(),
                   ),
                   Divider(),
                   GridView.builder(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    scrollDirection: Axis.vertical,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio: 1 / 1.2,
                         crossAxisCount: 2,
                         crossAxisSpacing: 15.0,
                         mainAxisSpacing: 20.0),
@@ -132,14 +135,10 @@ class _HomeState extends State<Home> {
 
   Widget getPost(BuildContext context, Post post, int index) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.black12,
-        borderRadius: BorderRadius.circular(5),
-      ),
-      padding: EdgeInsets.all(3),
       child: Stack(
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AspectRatio(
                 aspectRatio: 1.1,
@@ -147,49 +146,23 @@ class _HomeState extends State<Home> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     image: DecorationImage(
-                        alignment: FractionalOffset.topCenter,
-                        fit: BoxFit.cover,
-                        image: post.image),
+                      alignment: FractionalOffset.center,
+                      fit: BoxFit.cover,
+                      //image: post.image
+                      image: post.image,
+                    ),
                   ),
                 ),
               ),
-              Text("Burger")
-            ],
-          ),
-        ],
-      ),
-    );
-    /* return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                decoration: BoxDecoration(
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            alignment: Alignment.topCenter,
-                            repeat: ImageRepeat.noRepeat,
-                            image: AssetImage("lib/src/assets/product1.jpg")),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                child: Text("column2"),
+              Padding(padding: EdgeInsets.only(bottom: 5)),
+              Text(
+                "T-Shirt",
+                style: GoogleFonts.muli(fontSize: 17),
               )
             ],
           ),
         ],
       ),
-    ); */
+    );
   }
 }
