@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/src/models/user.dart';
+import 'package:ecommerceapp/models/user.dart';
 
 class Comment {
   String comment;

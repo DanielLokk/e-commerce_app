@@ -1,7 +1,7 @@
-import 'package:ecommerceapp/src/pages/home.dart';
+import 'package:ecommerceapp/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'src/themes/theme.dart';
+import 'themes/theme.dart';
 
 void main() => runApp(MyApp());
 

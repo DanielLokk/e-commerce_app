@@ -1,9 +1,7 @@
-import 'dart:html';
-
-import 'package:ecommerceapp/src/models/category.dart';
-import 'package:ecommerceapp/src/models/post.dart';
+import 'package:ecommerceapp/models/category.dart';
+import 'package:ecommerceapp/models/post.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerceapp/src/models/global.dart';
+import 'package:ecommerceapp/models/global.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
@@ -37,10 +35,11 @@ class _HomeState extends State<Home> {
                   ),
                   Divider(),
                   GridView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        crossAxisSpacing: 5.0,
-                        mainAxisSpacing: 0.0),
+                        crossAxisSpacing: 15.0,
+                        mainAxisSpacing: 20.0),
                     itemCount: listPosts.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) =>
@@ -133,8 +132,11 @@ class _HomeState extends State<Home> {
 
   Widget getPost(BuildContext context, Post post, int index) {
     return Container(
-      decoration: BoxDecoration(color: Colors.black12),
-      padding: EdgeInsets.all(50),
+      decoration: BoxDecoration(
+        color: Colors.black12,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      padding: EdgeInsets.all(3),
       child: Stack(
         children: [
           Column(
@@ -142,9 +144,8 @@ class _HomeState extends State<Home> {
               AspectRatio(
                 aspectRatio: 1.1,
                 child: Container(
-                  margin: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(5),
                     image: DecorationImage(
                         alignment: FractionalOffset.topCenter,
                         fit: BoxFit.cover,

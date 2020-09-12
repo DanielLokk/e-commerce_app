@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/src/models/post.dart';
+import 'package:ecommerceapp/models/post.dart';
 import 'package:flutter/material.dart';
 
 class Category {

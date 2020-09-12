@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/src/pages/home.dart';
+import 'package:ecommerceapp/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
