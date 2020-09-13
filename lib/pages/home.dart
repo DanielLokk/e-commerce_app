@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/models/category.dart';
-import 'package:ecommerceapp/models/post.dart';
+import 'package:ecommerceapp/pages/feed.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerceapp/models/global.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +10,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final double itemHeight = 200;
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -36,23 +35,7 @@ class _HomeState extends State<Home> {
                     child: getCategories(),
                   ),
                   Divider(),
-                  Container(
-                    height: MediaQuery.of(context).size.height - 250,
-                    child: GridView.builder(
-                      physics: ClampingScrollPhysics(),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                      itemBuilder: (context, index) =>
-                          getPost(context, listPosts[index], index),
-                      shrinkWrap: true,
-                      itemCount: listPosts.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 20.0,
-                        crossAxisSpacing: 20.0,
-                      ),
-                    ),
-                  ),
+                  FeedState().createFeed(context, listPosts),
                 ],
               ),
             ],
@@ -123,51 +106,6 @@ class _HomeState extends State<Home> {
             category.name,
             style: GoogleFonts.muli(),
           )
-        ],
-      ),
-    );
-  }
-
-  List<Widget> getPosts(BuildContext context) {
-    List<Widget> posts = [];
-    int index = 0;
-    for (Post post in listPosts) {
-      posts.add(getPost(context, post, index));
-      index++;
-    }
-    return posts;
-  }
-
-  Widget getPost(BuildContext context, Post post, int index) {
-    return Container(
-      child: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: AspectRatio(
-                  aspectRatio: 1.1,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      image: DecorationImage(
-                        alignment: FractionalOffset.center,
-                        fit: BoxFit.cover,
-                        //image: post.image
-                        image: post.image,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(bottom: 5)),
-              Text(
-                "T-Shirt",
-                style: GoogleFonts.muli(fontSize: 15),
-              )
-            ],
-          ),
         ],
       ),
     );

@@ -5,8 +5,17 @@ import 'package:flutter/material.dart';
 
 User user = new User("username", AssetImage("lib/assets/profile1.jpg"), [], []);
 
-Post post1 = new Post(AssetImage("lib/assets/post-image.jpg"), user,
-    "description", DateTime.now(), [], [], false, false);
+Post post1 = new Post(
+    "23.99 €",
+    "Asos T-shirt (white/black)",
+    AssetImage("lib/assets/post-image.jpg"),
+    user,
+    "description",
+    DateTime.now(),
+    [],
+    [],
+    false,
+    false);
 
 List<Category> categories = [
   new Category("Men", [post1], AssetImage("lib/assets/tshirt1.png")),
