@@ -1,6 +1,5 @@
 import 'package:ecommerceapp/models/category.dart';
 import 'package:ecommerceapp/models/post.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerceapp/models/global.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,20 +36,21 @@ class _HomeState extends State<Home> {
                     child: getCategories(),
                   ),
                   Divider(),
-                  GridView.builder(
-                    cacheExtent: 1.2 * listPosts.length,
-                    addAutomaticKeepAlives: true,
-                    dragStartBehavior: DragStartBehavior.down,
+                  ListView.builder(
+                    //cacheExtent: 1.2 * listPosts.length,
+                    //addAutomaticKeepAlives: true,
+                    //dragStartBehavior: DragStartBehavior.down,
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    itemBuilder: (context, index) =>
+                        getPost(context, listPosts[index], index),
+                    /* gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         childAspectRatio: 1 / 1.2,
                         crossAxisCount: 2,
                         crossAxisSpacing: 15.0,
-                        mainAxisSpacing: 20.0),
-                    itemCount: listPosts.length,
+                        mainAxisSpacing: 20.0), */
+                    physics: AlwaysScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemBuilder: (context, index) =>
-                        getPost(context, listPosts[index], index),
+                    itemCount: listPosts.length,
                   ),
                 ],
               ),
