@@ -36,21 +36,17 @@ class _HomeState extends State<Home> {
                     child: getCategories(),
                   ),
                   Divider(),
-                  ListView.builder(
-                    //cacheExtent: 1.2 * listPosts.length,
-                    //addAutomaticKeepAlives: true,
-                    //dragStartBehavior: DragStartBehavior.down,
-                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    itemBuilder: (context, index) =>
-                        getPost(context, listPosts[index], index),
-                    /* gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 1 / 1.2,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 15.0,
-                        mainAxisSpacing: 20.0), */
-                    physics: AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: listPosts.length,
+                  Container(
+                    height: MediaQuery.of(context).size.height - 250,
+                    child: ListView.builder(
+                      physics: ClampingScrollPhysics(),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      itemBuilder: (context, index) =>
+                          getPost(context, listPosts[index], index),
+                      shrinkWrap: true,
+                      itemCount: listPosts.length,
+                    ),
                   ),
                 ],
               ),
