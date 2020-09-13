@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
                   Divider(),
                   Container(
                     height: MediaQuery.of(context).size.height - 250,
-                    child: ListView.builder(
+                    child: GridView.builder(
                       physics: ClampingScrollPhysics(),
                       padding:
                           EdgeInsets.symmetric(horizontal: 15, vertical: 5),
@@ -46,6 +46,11 @@ class _HomeState extends State<Home> {
                           getPost(context, listPosts[index], index),
                       shrinkWrap: true,
                       itemCount: listPosts.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 20.0,
+                      ),
                     ),
                   ),
                 ],
@@ -140,16 +145,18 @@ class _HomeState extends State<Home> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AspectRatio(
-                aspectRatio: 1.1,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    image: DecorationImage(
-                      alignment: FractionalOffset.center,
-                      fit: BoxFit.cover,
-                      //image: post.image
-                      image: post.image,
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: 1.1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      image: DecorationImage(
+                        alignment: FractionalOffset.center,
+                        fit: BoxFit.cover,
+                        //image: post.image
+                        image: post.image,
+                      ),
                     ),
                   ),
                 ),
@@ -157,7 +164,7 @@ class _HomeState extends State<Home> {
               Padding(padding: EdgeInsets.only(bottom: 5)),
               Text(
                 "T-Shirt",
-                style: GoogleFonts.muli(fontSize: 17),
+                style: GoogleFonts.muli(fontSize: 15),
               )
             ],
           ),
