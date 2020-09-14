@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/pages/category_page.dart';
 import 'package:ecommerceapp/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: new Home(),
+      routes: {
+        '/': (context) => Home(),
+        '/categoryPage': (context) => CategoryPage(),
+      },
     );
   }
 }

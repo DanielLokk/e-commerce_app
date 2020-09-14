@@ -12,6 +12,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return new Scaffold(
       body: Container(
         child: SafeArea(
@@ -20,6 +21,9 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Column(
                 children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 50),
+                  ),
                   Row(
                     children: [
                       Padding(padding: EdgeInsets.only(left: 25)),
@@ -55,13 +59,15 @@ class _HomeState extends State<Home> {
 
   List<Widget> getListCategories() {
     List<Widget> listCategories = [];
+    int index = 0;
     for (Category category in categories) {
-      listCategories.add(createCategory(category));
+      index++;
+      listCategories.add(createCategory(category, index));
     }
     return listCategories;
   }
 
-  Widget createCategory(Category category) {
+  Widget createCategory(Category category, int index) {
     return Container(
       margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
       child: Column(
@@ -95,9 +101,12 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 FloatingActionButton(
+                  heroTag: "btn$index",
                   elevation: 0,
                   backgroundColor: Colors.transparent,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/categoryPage');
+                  },
                 ),
               ],
             ),
