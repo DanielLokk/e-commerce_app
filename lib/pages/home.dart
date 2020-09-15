@@ -1,5 +1,6 @@
 import 'package:ecommerceapp/models/category.dart';
 import 'package:ecommerceapp/pages/feed.dart';
+import 'package:ecommerceapp/pages/searchbar.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerceapp/models/global.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,32 +24,14 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Column(
                 children: [
-                  Padding(padding: EdgeInsets.symmetric(vertical: 50)),
-                  Row(
-                    children: [
-                      Padding(padding: EdgeInsets.only(left: 25)),
-                      Text(
-                        "Categories",
-                        style: GoogleFonts.muli(
-                            fontWeight: FontWeight.bold, fontSize: 27),
-                      ),
-                    ],
-                  ),
+                  SearchBar(),
+                  header("Categories"),
                   Container(
                     height: 120,
                     child: getCategories(),
                   ),
-                  Row(
-                    children: [
-                      Padding(padding: EdgeInsets.symmetric(horizontal: 12.5)),
-                      Text(
-                        "Trending",
-                        style: GoogleFonts.muli(
-                            fontWeight: FontWeight.bold, fontSize: 27),
-                      ),
-                    ],
-                  ),
                   Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+                  header("Trending"),
                   Divider(),
                   FeedState().createFeed(context, listPosts),
                 ],
@@ -57,6 +40,18 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget header(String str) {
+    return Row(
+      children: [
+        Padding(padding: EdgeInsets.symmetric(horizontal: 12.5)),
+        Text(
+          str,
+          style: GoogleFonts.muli(fontWeight: FontWeight.bold, fontSize: 27),
+        ),
+      ],
     );
   }
 
@@ -116,7 +111,11 @@ class _HomeState extends State<Home> {
                   elevation: 0,
                   backgroundColor: Colors.transparent,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/categoryPage');
+                    Navigator.pushNamed(
+                      context,
+                      '/categoryPage',
+                      arguments: category,
+                    );
                   },
                 ),
               ],
