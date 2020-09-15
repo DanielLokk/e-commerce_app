@@ -13,6 +13,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return new Scaffold(
       body: Container(
         child: SafeArea(
@@ -21,9 +23,7 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 50),
-                  ),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 50)),
                   Row(
                     children: [
                       Padding(padding: EdgeInsets.only(left: 25)),
@@ -38,6 +38,17 @@ class _HomeState extends State<Home> {
                     height: 120,
                     child: getCategories(),
                   ),
+                  Row(
+                    children: [
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 12.5)),
+                      Text(
+                        "Trending",
+                        style: GoogleFonts.muli(
+                            fontWeight: FontWeight.bold, fontSize: 27),
+                      ),
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                   Divider(),
                   FeedState().createFeed(context, listPosts),
                 ],
