@@ -24,7 +24,13 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Column(
                 children: [
-                  SearchBar(),
+                  Row(
+                    children: [
+                      SearchBar(),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: 140)),
+                      getProfileAvatar(context),
+                    ],
+                  ),
                   header("Categories"),
                   Container(
                     height: 120,
@@ -125,6 +131,44 @@ class _HomeState extends State<Home> {
             category.name,
             style: GoogleFonts.muli(),
           )
+        ],
+      ),
+    );
+  }
+
+  Widget getProfileAvatar(BuildContext context) {
+    return Container(
+      height: 55,
+      width: 55,
+      child: Stack(
+        alignment: Alignment(0, 0),
+        children: [
+          Container(
+            height: 55,
+            width: 55,
+            child: CircleAvatar(
+              backgroundColor: Colors.black26,
+            ),
+          ),
+          Container(
+            height: 52,
+            width: 52,
+            child: CircleAvatar(
+              backgroundImage: AssetImage("lib/assets/profile1.jpg"),
+            ),
+          ),
+          FloatingActionButton(
+            heroTag: "profile",
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            onPressed: () {
+              /* Navigator.pushNamed(
+                context,
+                '/categoryPage',
+                arguments: category,
+              ); */
+            },
+          ),
         ],
       ),
     );
