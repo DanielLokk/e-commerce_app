@@ -31,6 +31,7 @@ class _HomeState extends State<Home> {
                       getProfileAvatar(context),
                     ],
                   ),
+                  Padding(padding: EdgeInsets.symmetric(vertical: 20)),
                   header("Categories"),
                   Container(
                     height: 120,
@@ -38,7 +39,9 @@ class _HomeState extends State<Home> {
                   ),
                   Padding(padding: EdgeInsets.symmetric(vertical: 5)),
                   header("Trending"),
-                  Divider(),
+                  Divider(
+                    color: Colors.green[300],
+                  ),
                   FeedState().createFeed(context, listPosts),
                 ],
               ),
@@ -91,10 +94,10 @@ class _HomeState extends State<Home> {
               alignment: Alignment(0, 0),
               children: <Widget>[
                 Container(
-                  height: 60,
-                  width: 60,
+                  height: 59,
+                  width: 59,
                   child: CircleAvatar(
-                    backgroundColor: Colors.green,
+                    backgroundColor: Colors.green[300],
                   ),
                 ),
                 Container(
