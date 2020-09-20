@@ -10,18 +10,33 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     final Category category = ModalRoute.of(context).settings.arguments;
-
+    int index = 0;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(category.name),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Go back!'),
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 60),
+          ),
+          IconButton(
+              icon: Icon(Icons.plus_one),
+              onPressed: () {
+                setState(() {
+                  index++;
+                });
+              }),
+          IconButton(
+            icon: Icon(Icons.keyboard_return),
+            onPressed: () {
+              index++;
+              Navigator.pop(context);
+            },
+          ),
+          Center(
+            child: Text(
+              index.toString(),
+            ),
+          )
+        ],
       ),
     );
   }
