@@ -1,5 +1,8 @@
 import 'package:ecommerceapp/models/category.dart';
+import 'package:ecommerceapp/pages/feed.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:ecommerceapp/models/global.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -12,30 +15,19 @@ class _CategoryPageState extends State<CategoryPage> {
     final Category category = ModalRoute.of(context).settings.arguments;
     int index = 0;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green[300],
+        title: Title(
+          color: Colors.black,
+          child: Text(
+            category.name,
+            style: GoogleFonts.muli(fontSize: 20.0),
+          ),
+        ),
+      ),
       body: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 60),
-          ),
-          IconButton(
-              icon: Icon(Icons.plus_one),
-              onPressed: () {
-                setState(() {
-                  index++;
-                });
-              }),
-          IconButton(
-            icon: Icon(Icons.keyboard_return),
-            onPressed: () {
-              index++;
-              Navigator.pop(context);
-            },
-          ),
-          Center(
-            child: Text(
-              index.toString(),
-            ),
-          )
+          FeedState().createFeed(context, listPosts),
         ],
       ),
     );
